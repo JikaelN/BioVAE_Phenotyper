@@ -1,0 +1,20 @@
+name : CI Pipeline
+
+on: [push]
+
+jobs:
+  buildd-and-test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python
+      uses: actions/setup-python@V4
+      with:
+        python-version: '3.12.6'
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+        pip install pytest
+    - name: Run tests
+      run: |
+        pytest
