@@ -1,6 +1,6 @@
 # BioVAE-Phenotyper: Unsupervised Deep Learning for Cell Screening
 
-![CI/CD Status](https://github.com/JikaelN/BioVAE-Phenotyper/actions/workflows/tests.yml/badge.svg)
+[![CI Pipeline](https://github.com/JikaelN/BioVAE_Phenotyper/actions/workflows/tests.yml/badge.svg)](https://github.com/JikaelN/BioVAE_Phenotyper/actions/workflows/tests.yml)
 ![Python](https://img.shields.io/badge/python-3.12-blue)
 ![Framework](https://img.shields.io/badge/framework-PyTorch%20%7C%20JAX-orange)
 
