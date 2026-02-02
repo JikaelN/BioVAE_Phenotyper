@@ -1,20 +1,29 @@
-name : CI Pipeline
+name: CI Pipeline
 
 on: [push]
 
 jobs:
-  buildd-and-test:
+  build-and-test:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
-    - name: Set up Python
-      uses: actions/setup-python@v5 # <-- Updated to v5
-      with:
-        python-version: '3.12.6'
-    - name: Install dependencies
-      run: |
-        pip install -r requirements.txt
-        pip install pytest
-    - name: Run tests
-      run: |
-        pytest
+      - uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12' 
+          # Note: We use '3.12' generally so GitHub picks the latest available patch version
+
+      - name: Install Poetry
+        run: pip install poetry
+
+      - name: Configure Poetry
+        # Configure Poetry to not create a virtualenv inside the Action
+        run: poetry config virtualenvs.create false
+
+      - name: Install dependencies
+        # --no-root is important because we disabled package-mode
+        run: poetry install --no-interaction --no-root
+
+      - name: Run Unit Tests
+        run: poetry run pytest
