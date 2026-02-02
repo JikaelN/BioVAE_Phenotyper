@@ -6,9 +6,9 @@ jobs:
   buildd-and-test:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Set up Python
-      uses: actions/setup-python@V4
+      uses: actions/setup-python@v5 # <-- Updated to v5
       with:
         python-version: '3.12.6'
     - name: Install dependencies
