@@ -22,8 +22,9 @@ jobs:
         run: poetry config virtualenvs.create false
 
       - name: Install dependencies
-        # --no-root is important because we disabled package-mode
-        run: poetry install --no-interaction --no-root
+        run: |
+          pip install torch --index-url https://download.pytorch.org/whl/cpu
+          poetry install --no-interaction --no-root
 
       - name: Run Unit Tests
         run: poetry run pytest
